@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- colours.html -->
 <html lang="en">
 
@@ -395,54 +395,35 @@
             position: absolute;
             inset: 0;
         }
-
-        /* Lime plaster texture — heavy grain + trowel marks */
-        /* Layer 1: trowel marks — organic patches of light and shadow like real plaster */
+        /* Real lime plaster texture overlay — photograph-based */
         .colour-swatch::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse at 25% 20%, rgba(0,0,0,0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.12) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 15%, rgba(0,0,0,0.04) 0%, transparent 45%),
-                radial-gradient(ellipse at 15% 70%, rgba(255,255,255,0.08) 0%, transparent 40%),
-                linear-gradient(165deg, rgba(0,0,0,0.03) 0%, transparent 30%, rgba(0,0,0,0.04) 70%, transparent 100%);
+            background-image: url('images/lime-texture.png');
+            background-size: cover;
+            background-position: center;
             z-index: 1;
             pointer-events: none;
+            mix-blend-mode: multiply;
+            opacity: 0.85;
         }
 
-        /* Layer 2: heavy grain noise + brush strokes */
+        /* Subtle depth variation on top */
         .colour-swatch::after {
             content: '';
             position: absolute;
             inset: 0;
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                    162deg,
-                    transparent 0px,
-                    transparent 2px,
-                    rgba(0,0,0,0.025) 2px,
-                    rgba(0,0,0,0.025) 3px
-                ),
-                repeating-linear-gradient(
-                    145deg,
-                    transparent 0px,
-                    transparent 8px,
-                    rgba(0,0,0,0.012) 8px,
-                    rgba(0,0,0,0.012) 9px
-                );
-            background-size: 250px 250px, 100% 100%, 100% 100%;
-            pointer-events: none;
+            background: radial-gradient(ellipse at 40% 35%,
+                rgba(255,255,255,0.08) 0%,
+                transparent 50%,
+                rgba(0,0,0,0.06) 100%);
             z-index: 2;
-            mix-blend-mode: soft-light;
-            opacity: 1;
+            pointer-events: none;
         }
 
-        .colour-card:hover .colour-swatch::after {
-            opacity: 1;
+        .colour-card:hover .colour-swatch::before {
+            opacity: 0.9;
         }
 
         .colour-info {
