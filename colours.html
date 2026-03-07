@@ -1475,12 +1475,8 @@
             <button class="colour-modal-close" aria-label="Close">&times;</button>
             
             <div class="colour-modal-images">
-                <div class="colour-modal-texture" id="modal-texture">
-                    <span class="colour-modal-img-label">Texture</span>
-                </div>
-                <div class="colour-modal-room" id="modal-room">
-                    <span class="colour-modal-img-label">In Situ</span>
-                </div>
+                <div class="colour-modal-texture" id="modal-texture"></div>
+                <div class="colour-modal-room" id="modal-room"></div>
             </div>
             
             <div class="colour-modal-info">
@@ -1608,30 +1604,17 @@
             height: 90vh;
         }
         .colour-modal-texture {
-            flex: 0 0 35%;
+            flex: 1;
             position: relative;
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid rgba(201,180,138,0.12);
         }
         .colour-modal-room {
-            flex: 0 0 65%;
+            flex: 1;
             position: relative;
             background-size: cover;
             background-position: center;
-        }
-        .colour-modal-img-label {
-            position: absolute;
-            bottom: 0.8rem;
-            left: 0.8rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
-            background: rgba(0,0,0,0.5);
-            padding: 0.3rem 0.6rem;
-            border-radius: 2px;
         }
         
         /* Info Column */
