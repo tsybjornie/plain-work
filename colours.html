@@ -1476,10 +1476,10 @@
             
             <div class="colour-modal-images">
                 <div class="colour-modal-texture" id="modal-texture">
-                    <span class="colour-modal-img-label">Texture Close-Up</span>
+                    <span class="colour-modal-img-label">Texture</span>
                 </div>
                 <div class="colour-modal-room" id="modal-room">
-                    <span class="colour-modal-img-label">Room Visualisation</span>
+                    <span class="colour-modal-img-label">In Situ</span>
                 </div>
             </div>
             
@@ -1607,15 +1607,18 @@
             flex-direction: column;
             height: 90vh;
         }
-        .colour-modal-texture,
-        .colour-modal-room {
-            flex: 1;
+        .colour-modal-texture {
+            flex: 0 0 35%;
             position: relative;
             background-size: cover;
             background-position: center;
-        }
-        .colour-modal-texture {
             border-bottom: 1px solid rgba(201,180,138,0.12);
+        }
+        .colour-modal-room {
+            flex: 0 0 65%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
         }
         .colour-modal-img-label {
             position: absolute;
@@ -1851,15 +1854,18 @@
                 const vibe = card.querySelector('.colour-vibe') ? card.querySelector('.colour-vibe').textContent.trim() : '';
                 const collection = card.dataset.collection || '';
                 
-                // Set colour on texture preview (blend with grayscale texture)
+                // Get safe filename from colour name
+                const safeName = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
+                
+                // Set texture preview — use the swatch colour itself with texture
                 textureEl.style.backgroundImage = 'url(images/texture-base.png)';
                 textureEl.style.backgroundColor = hex || bg;
                 textureEl.style.backgroundBlendMode = 'multiply';
                 
-                // Set colour on room preview (blend with room photo)
-                roomEl.style.backgroundImage = 'url(images/room-base.png)';
-                roomEl.style.backgroundColor = hex || bg;
-                roomEl.style.backgroundBlendMode = 'multiply';
+                // Set room preview — load the actual Kalklitir-style room image
+                roomEl.style.backgroundImage = 'url(images/room-' + safeName + '.png)';
+                roomEl.style.backgroundColor = 'transparent';
+                roomEl.style.backgroundBlendMode = 'normal';
                 
                 // Populate info
                 nameEl.textContent = name;
