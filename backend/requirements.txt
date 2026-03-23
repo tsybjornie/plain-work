@@ -8,3 +8,4 @@ playwright
 stripe
 schedule
 python-dotenv
+anthropic
